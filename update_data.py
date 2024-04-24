@@ -71,7 +71,11 @@ def parseBibtex(bibFile):
 def middleware(parsedData):
     for entry in parsedData.values():
         if "date" in entry and not "year" in entry:
-            entry["year"] = str(isoparse(entry["date"]).year)
+            try:
+                date = isoparse(entry["date"])
+                entry["year"] = str(date.year)
+            except:
+                raise Exception(f"Invalid date {entry['date']}")
     return parsedData
 
 
