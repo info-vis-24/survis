@@ -1,6 +1,6 @@
-import os
-import json
 import codecs
+import json
+import os
 import time
 
 BASE_DIR = os.path.dirname(__file__)
@@ -22,6 +22,7 @@ AVAILABLE_IMG_FILE = os.path.join(GENERATED_DIR, "available_img.js")
 CREATE_THUMBNAILS = False
 if CREATE_THUMBNAILS:
     import tempfile
+
     from pdf2image import convert_from_path
 
 
@@ -47,7 +48,9 @@ def parseBibtex(bibFile):
                     if len(value) > 0 and value[0] == "{":
                         value = value[1:]
                     if field in parsedData[currentId]:
-                        parsedData[currentId][field] = parsedData[currentId][field] + " " + value
+                        parsedData[currentId][field] = (
+                            parsedData[currentId][field] + " " + value
+                        )
                     else:
                         parsedData[currentId][field] = value
                     lastField = field
@@ -56,7 +59,9 @@ def parseBibtex(bibFile):
                         value = line.strip()
                         value = value.strip("} \n").replace("},", "").strip()
                         if len(value) > 0:
-                            parsedData[currentId][lastField] = parsedData[currentId][field] + " " + value
+                            parsedData[currentId][lastField] = (
+                                parsedData[currentId][field] + " " + value
+                            )
         fIn.close()
     return parsedData
 
@@ -64,7 +69,9 @@ def parseBibtex(bibFile):
 def writeJSON(parsedData):
     with codecs.open(BIB_JS_FILE, "w", "utf-8-sig") as fOut:
         fOut.write("const generatedBibEntries = ")
-        fOut.write(json.dumps(parsedData, sort_keys=True, indent=4, separators=(',', ': ')))
+        fOut.write(
+            json.dumps(parsedData, sort_keys=True, indent=4, separators=(",", ": "))
+        )
         fOut.write(";")
         fOut.close()
 
@@ -76,12 +83,12 @@ def listAvailablePdf():
     count = 0
     for file in os.listdir(PAPERS_DIR):
         if file.endswith(".pdf"):
-            s += "\"" + file.replace(".pdf", "") + "\","
+            s += '"' + file.replace(".pdf", "") + '",'
             count += 1
             if CREATE_THUMBNAILS:
                 create_thumbnail(file)
     if count > 0:
-        s = s[:len(s) - 1]
+        s = s[: len(s) - 1]
     s += "];"
     fOut.write(s)
 
@@ -92,15 +99,15 @@ def listAvailableImg():
     count = 0
     for file in os.listdir(PAPERS_IMG_DIR):
         if file.endswith(".png"):
-            s += "\"" + file.replace(".png", "") + "\","
+            s += '"' + file.replace(".png", "") + '",'
             count += 1
     if count > 0:
-        s = s[:len(s) - 1]
+        s = s[: len(s) - 1]
     s += "];"
     fOut.write(s)
 
 
-#def create_thumbnail(file):
+# def create_thumbnail(file):
 #    pdf_path = os.path.join(PAPERS_DIR, file)
 #    thumbnail_path = os.path.join(PAPERS_IMG_DIR, file.replace(".pdf", ".png"))
 #
@@ -132,7 +139,7 @@ def generate_folders():
             pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     generate_folders()
 
     prevBibTime = 0
