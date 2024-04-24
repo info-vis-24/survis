@@ -3,6 +3,8 @@ import json
 import os
 import time
 
+from dateutil.parser import isoparse
+
 BASE_DIR = os.path.dirname(__file__)
 
 DATA_DIR = os.path.join(BASE_DIR, "src/data/")
@@ -66,6 +68,13 @@ def parseBibtex(bibFile):
     return parsedData
 
 
+def middleware(parsedData):
+    for entry in parsedData.values():
+        if "date" in entry and not "year" in entry:
+            entry["year"] = str(isoparse(entry["date"]).year)
+    return parsedData
+
+
 def writeJSON(parsedData):
     with codecs.open(BIB_JS_FILE, "w", "utf-8-sig") as fOut:
         fOut.write("const generatedBibEntries = ")
@@ -123,7 +132,9 @@ def listAvailableImg():
 
 def update():
     print("convert bib file")
-    writeJSON(parseBibtex(BIB_FILE))
+    parsedData = parseBibtex(BIB_FILE)
+    processedData = middleware(parsedData)
+    writeJSON(processedData)
     print("list available paper PDF files")
     listAvailablePdf()
     print("list available paper images")
