@@ -171,11 +171,11 @@ const tags = (function () {
                         selectors.vis(visDiv, tagFrequencySelector[tag]);
                     }
                 }
-                tagDiv.tooltipster({
-                    content: $(tooltipDiv),
-                    theme: 'tooltipster-survis'
-                });
-                tagDiv.tooltipster('show');
+                // tagDiv.tooltipster({
+                //     content: $(tooltipDiv),
+                //     theme: 'tooltipster-survis'
+                // });
+                // tagDiv.tooltipster('show');
             }
         });
         return tagDiv;
@@ -204,9 +204,9 @@ const tags = (function () {
                 title: title,
                 text: name + ": "
             }).appendTo(categoryDiv);
-            labelDiv.tooltipster({
-                theme: 'tooltipster-survis'
-            });
+            // labelDiv.tooltipster({
+            //     theme: 'tooltipster-survis'
+            // });
         }
         $.each(tagDivs, function (i, tag) {
             tag.appendTo(categoryDiv);

@@ -184,9 +184,9 @@ const clustering = (function() {
                         class: 'symbol',
                         text: 'X'
                     }).appendTo(closeButton);
-                    closeButton.tooltipster({
-                        theme: 'tooltipster-survis'
-                    });
+                    // closeButton.tooltipster({
+                    //     theme: 'tooltipster-survis'
+                    // });
                     closeButton.click(function () {
                         delete bib.clusters[clusteringName];
                         page.update();
@@ -277,10 +277,10 @@ const clustering = (function() {
                                 selectors.vis(visDiv, clusterSelectorSimilarities[clusterName]);
                             }
                         }
-                        clusterDiv.tooltipster({
-                            content: $(tooltipDiv),
-                            theme: 'tooltipster-survis'
-                        });
+                        // clusterDiv.tooltipster({
+                        //     content: $(tooltipDiv),
+                        //     theme: 'tooltipster-survis'
+                        // });
                     });
                 });
             }

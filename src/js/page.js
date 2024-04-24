@@ -13,7 +13,7 @@ const page = (function () {
             page.generateTooltips($('body'));
         },
         update: function (scrollToTop) {
-            $('.tooltipstered').tooltipster('hide');
+            // $('.tooltipstered').tooltipster('hide');
             selectors.updateSelectors();
             references.updateReferences();
             stats.updateStats();
@@ -56,9 +56,9 @@ const page = (function () {
             notificationDiv.fadeIn('fast').delay(5000).fadeOut('fast');
         },
         generateTooltips: function (div) {
-            div.find('.tooltip').tooltipster({
-                theme: 'tooltipster-survis'
-            });
+            // div.find('.tooltip').tooltipster({
+            //     theme: 'tooltipster-survis'
+            // });
         }
     };
 

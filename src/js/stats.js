@@ -5,7 +5,7 @@ const stats = (function () {
             var statsDiv = $('#stats');
             if (statsDiv.children().length > 0) {
                 statsDiv.empty();
-                statsDiv.tooltipster('destroy');
+                // statsDiv.tooltipster('destroy');
             }
 
             var s = bib.nEntries + " publications";
@@ -50,10 +50,10 @@ const stats = (function () {
                     selectors.vis(visDiv, similarities);
                 }
             }
-            statsDiv.tooltipster({
-                content: tooltipDiv,
-                theme: 'tooltipster-survis'
-            });
+            // statsDiv.tooltipster({
+            //     content: tooltipDiv,
+            //     theme: 'tooltipster-survis'
+            // });
         }
     }
 })();

@@ -556,11 +556,11 @@ const timeline = (function () {
     }
 
     function generateTooltips(timelineDiv, barWidth) {
-        timelineDiv.find('.tooltip').tooltipster({
-            theme: 'tooltipster-survis',
-            offsetX: (barWidth / 2) + 'px',
-            offsetY: '-3px'
-        });
+        // timelineDiv.find('.tooltip').tooltipster({
+        //     theme: 'tooltipster-survis',
+        //     offsetX: (barWidth / 2) + 'px',
+        //     offsetY: '-3px'
+        // });
     }
 
     function initCitationControls(timelineDiv) {
@@ -588,9 +588,9 @@ const timeline = (function () {
                 text: 'min #citations ',
                 title: 'choose the minimum number of citations (publications with fewer citations will not be displayed in the above citation representation)'
             }).appendTo(timelineDiv);
-            citationOccurrenceDiv.tooltipster({
-                theme: 'tooltipster-survis'
-            });
+            // citationOccurrenceDiv.tooltipster({
+            //     theme: 'tooltipster-survis'
+            // });
             var buttonDec = $('<div>', {
                 class: 'button dec small',
                 text: '-'

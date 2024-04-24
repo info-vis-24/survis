@@ -14,7 +14,7 @@ const entryLayout = (function () {
                     var entryDiv = createEntryDiv(id);
                     var sparklineDiv = entryDiv.find('.sparkline');
                     sparklineDiv.empty();
-                    sparklineDiv.tooltipster('destroy');
+                    // sparklineDiv.tooltipster('destroy');
                     selectors.vis(sparklineDiv, bib.entrySelectorSimilarities[id], true);
                     var tooltipDiv = $('<div>');
                     $('<h3><span class="label">publication: </span>' + id + '</h3>').appendTo(tooltipDiv);
@@ -28,10 +28,10 @@ const entryLayout = (function () {
                             selectors.vis(visDiv, bib.entrySelectorSimilarities[id]);
                         }
                     }
-                    sparklineDiv.tooltipster({
-                        content: tooltipDiv,
-                        theme: 'tooltipster-survis'
-                    });
+                    // sparklineDiv.tooltipster({
+                    //     content: tooltipDiv,
+                    //     theme: 'tooltipster-survis'
+                    // });
                     var greyValue = Math.round(-selectors.getTotalSimilarity(bib, id) * 200 + 200);
                     entryDiv.css('border-color', 'rgb(' + greyValue + ',' + greyValue + ',' + greyValue + ')');
 
@@ -207,7 +207,7 @@ const entryLayout = (function () {
         var sparklineDiv = $('<div>', {
             class: 'vis sparkline'
         }).appendTo(entryHeaderDiv);
-        sparklineDiv.tooltipster({ 'content': $('<div>') });
+        // sparklineDiv.tooltipster({ 'content': $('<div>') });
         var idDiv = $('<div>', {
             class: 'id',
             text: id
