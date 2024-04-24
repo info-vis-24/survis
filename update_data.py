@@ -42,10 +42,10 @@ def parseBibtex(bibFile):
             if currentId != "":
                 if "=" in line:
                     field = line.split("=")[0].strip().lower()
-                    value = line.split("=")[1].strip("} \n")
-                    if value.endswith("},"):
+                    value = line.split("=")[1].strip('"} \n')
+                    if value.endswith("},") or value.endswith('",'):
                         value = value[:-2]
-                    if len(value) > 0 and value[0] == "{":
+                    if len(value) > 0 and (value[0] == "{" or value[0] == '"'):
                         value = value[1:]
                     if field in parsedData[currentId]:
                         parsedData[currentId][field] = (
